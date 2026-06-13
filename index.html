@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="logo/android-icon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="logo/android-icon-96x96.png">
+<link rel="apple-touch-icon" sizes="96x96" href="logo/apple-icon-96x96.png">
+<meta name="msapplication-TileImage" content="logo/ms-icon-96x96.png">
+<title>InstinctGaming — Cheats Warzone, Arc Raiders &amp; Fortnite</title>
+<style>
+  :root{
+    --bg:#070a10;--bg-2:#0d111b;--card:#141a26;--card-hover:#1a2130;
+    --line:#222a3a;--accent:#3b82f6;--accent-2:#22d3ee;--green:#22c55e;
+    --red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--text:#e9eef7;--muted:#8593aa;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+
+  header{position:sticky;top:0;z-index:60;background:rgba(7,10,16,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{max-width:1200px;margin:0 auto;padding:15px 20px;display:flex;align-items:center;gap:24px}
+  .logo{font-weight:800;font-size:21px;letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+  .logo .mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:15px}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:22px;margin-left:10px}
+  .nav-links a{color:var(--muted);font-size:14px;font-weight:600;transition:.2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-right{margin-left:auto;display:flex;gap:12px;align-items:center}
+  .btn{padding:9px 18px;border-radius:9px;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:.2s}
+  .btn:hover{background:var(--card-hover)}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 20px rgba(59,130,246,.35)}
+  .btn-primary:hover{background:#2f6fd6}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(900px 480px at 50% -8%,rgba(59,130,246,.28),transparent 60%),
+    radial-gradient(680px 380px at 12% 35%,rgba(245,158,11,.16),transparent 55%),
+    radial-gradient(680px 380px at 88% 35%,rgba(139,92,246,.18),transparent 55%);
+    pointer-events:none}
+  .hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:60px 20px 30px;text-align:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#cfe0ff;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.35);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blink 2s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+  .hero h1{font-size:48px;line-height:1.1;font-weight:800;letter-spacing:-.5px;max-width:900px;margin:0 auto}
+  .hero h1 .grad{background:linear-gradient(90deg,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{color:var(--muted);font-size:17px;max-width:660px;margin:18px auto 0}
+  .hero-cta{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+  .btn-lg{padding:14px 28px;font-size:15.5px;border-radius:11px}
+
+  .packs-stage{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:30px;margin-top:46px;padding-bottom:20px;min-height:380px}
+  .pack-float{position:relative;transition:transform .3s ease;display:block}
+  .pack-float img{display:block;width:300px;max-width:38vw;border-radius:14px;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6))}
+  .pack-float .label{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);background:rgba(7,10,16,.85);border:1px solid var(--line);padding:7px 16px;border-radius:999px;font-weight:800;font-size:14px;white-space:nowrap;backdrop-filter:blur(6px)}
+  .pack-float .label b{color:var(--accent-2)}
+  .pack-float:hover{transform:translateY(-14px) scale(1.03)}
+  .p-left{animation:floaty 6s ease-in-out infinite}
+  .p-center{z-index:3;animation:floaty 5s ease-in-out infinite .4s}
+  .p-center img{width:340px;max-width:42vw}
+  .p-right{animation:floaty 6.5s ease-in-out infinite .8s}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+  .glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:70%;height:60px;filter:blur(10px);z-index:0}
+
+  .artbox{border-radius:14px;border:1px solid var(--line);aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;position:relative;overflow:hidden;box-shadow:0 26px 44px rgba(0,0,0,.55)}
+  .artbox.arc{background:radial-gradient(120% 95% at 50% 0%,rgba(245,158,11,.30),transparent 62%),linear-gradient(135deg,#2a2113,#0a0e16)}
+  .artbox.fortnite{background:radial-gradient(120% 95% at 50% 0%,rgba(139,92,246,.34),transparent 62%),linear-gradient(135deg,#1d1636,#0a0e16)}
+  .artbox .ab-game{font-size:11px;font-weight:800;letter-spacing:2.5px;color:rgba(255,255,255,.6);text-transform:uppercase}
+  .artbox .ab-name{font-size:34px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .artbox.arc .ab-name{color:#ffe2ad}
+  .artbox.fortnite .ab-name{color:#ddd0ff}
+  .artbox .ab-brand{font-size:10px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:1.5px}
+  .pack-float .artbox{width:300px;max-width:38vw}
+
+  @media(max-width:760px){
+    .hero h1{font-size:30px}
+    .packs-stage{gap:10px;min-height:220px}
+    .pack-float img,.p-center img,.pack-float .artbox{width:30vw}
+    .artbox .ab-name{font-size:18px}
+    .nav-links{display:none}
+    .pack-float .label{font-size:11px;padding:5px 10px}
+  }
+
+  /* Trust strip */
+  .strip{border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .strip-inner{max-width:1100px;margin:0 auto;padding:22px 20px;display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat .n{font-size:24px;font-weight:800}
+  .stat .l{font-size:12.5px;color:var(--muted);font-weight:600}
+  .stat .stars{color:#facc15;font-size:13px}
+
+  /* Sections */
+  .section{max-width:1200px;margin:0 auto;padding:64px 20px}
+  .sec-head{text-align:center;margin-bottom:42px}
+  .sec-head h2{font-size:34px;font-weight:800;letter-spacing:-.3px}
+  .sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
+
+  /* Game cards */
+  .games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:900px){.games-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
+  .game-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:.25s;position:relative}
+  .game-card::after{content:"";position:absolute;inset:0;border-radius:20px;border:1px solid transparent;transition:.25s;pointer-events:none}
+  .game-card:hover{transform:translateY(-8px)}
+  .game-card.wz:hover::after{border-color:rgba(59,130,246,.5);box-shadow:0 22px 55px rgba(59,130,246,.2)}
+  .game-card.arc:hover::after{border-color:rgba(245,158,11,.5);box-shadow:0 22px 55px rgba(245,158,11,.2)}
+  .game-card.fn:hover::after{border-color:rgba(139,92,246,.5);box-shadow:0 22px 55px rgba(139,92,246,.2)}
+  .gc-img{position:relative;height:200px;padding:22px;display:flex;align-items:center;justify-content:center}
+  .game-card.wz .gc-img{background:radial-gradient(420px 220px at 50% 0%,rgba(59,130,246,.16),transparent)}
+  .game-card.arc .gc-img{background:radial-gradient(420px 220px at 50% 0%,rgba(245,158,11,.16),transparent)}
+  .game-card.fn .gc-img{background:radial-gradient(420px 220px at 50% 0%,rgba(139,92,246,.18),transparent)}
+  .gc-img img{max-height:160px;border-radius:10px;filter:drop-shadow(0 16px 28px rgba(0,0,0,.55));transition:.3s}
+  .gc-img .artbox{width:74%}
+  .game-card:hover .gc-img img,.game-card:hover .gc-img .artbox{transform:translateY(-5px) scale(1.03)}
+  .gc-count{position:absolute;top:16px;right:16px;font-size:11px;font-weight:800;padding:5px 10px;border-radius:7px;text-transform:uppercase;letter-spacing:.4px}
+  .gc-count.wz{background:rgba(59,130,246,.15);color:#7eb0ff;border:1px solid rgba(59,130,246,.4)}
+  .gc-count.arc{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.4)}
+  .gc-count.fn{background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.4)}
+  .gc-body{padding:8px 24px 26px;display:flex;flex-direction:column;flex:1}
+  .gc-body h3{font-size:20px;font-weight:800;line-height:1.25}
+  .gc-body .gc-desc{font-size:13.5px;color:var(--muted);margin:10px 0 14px;flex:1}
+  .gc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .gc-price{font-size:14px;font-weight:700;color:#cdd7e8}
+  .gc-price b{font-size:20px;font-weight:800;color:#fff}
+  .consoles{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:16px}
+  .consoles b{color:#cdd7e8;background:#0f1622;border:1px solid var(--line);padding:3px 9px;border-radius:6px}
+  .gc-cta{display:block;text-align:center;padding:12px;border-radius:11px;background:var(--accent);color:#fff;font-weight:800;font-size:14.5px;transition:.2s}
+  .game-card:hover .gc-cta{background:#2f6fd6}
+
+  /* Why */
+  .why{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:36px}
+  .why-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .why-card .ico{font-size:26px;margin-bottom:12px}
+  .why-card h4{font-size:16px;font-weight:800;margin-bottom:6px}
+  .why-card p{font-size:13.5px;color:var(--muted)}
+
+  /* CTA band */
+  .band{max-width:1100px;margin:0 auto;padding:0 20px}
+  .band-inner{background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(34,211,238,.1));border:1px solid rgba(59,130,246,.35);border-radius:20px;padding:46px 30px;text-align:center;margin:64px 0}
+  .band-inner h2{font-size:28px;font-weight:800}
+  .band-inner p{color:#cdd7e8;margin:10px 0 22px}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);background:var(--bg-2)}
+  .foot-inner{max-width:1100px;margin:0 auto;padding:34px 20px}
+  .foot-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+  .foot-links{display:flex;gap:20px}
+  .foot-links a{color:var(--muted);font-size:13.5px;font-weight:600}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{color:#6b7689;font-size:12px;line-height:1.7;border-top:1px solid var(--line);padding-top:20px}
+  .artbox.valorant{background:radial-gradient(120% 95% at 50% 0%,rgba(255,70,85,.32),transparent 62%),linear-gradient(135deg,#2a1015,#0a0e16)}
+  .artbox.valorant .ab-name{color:#ffd0d4}
+  .artbox.tarkov{background:radial-gradient(120% 95% at 50% 0%,rgba(166,154,70,.30),transparent 62%),linear-gradient(135deg,#23230f,#0a0e16)}
+  .artbox.tarkov .ab-name{color:#eee6b0}
+  .game-card.val:hover::after{border-color:rgba(255,70,85,.5);box-shadow:0 22px 55px rgba(255,70,85,.2)}
+  .game-card.tk:hover::after{border-color:rgba(166,154,70,.5);box-shadow:0 22px 55px rgba(166,154,70,.2)}
+  .game-card.val .gc-img{background:radial-gradient(420px 220px at 50% 0%,rgba(255,70,85,.16),transparent)}
+  .game-card.tk .gc-img{background:radial-gradient(420px 220px at 50% 0%,rgba(166,154,70,.16),transparent)}
+  .gc-count.val{background:rgba(255,70,85,.15);color:#ff8a93;border:1px solid rgba(255,70,85,.4)}
+  .gc-count.tk{background:rgba(166,154,70,.15);color:#d9cf7a;border:1px solid rgba(166,154,70,.4)}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "logo": "https://instinct-gaming.com/logo.png",
+  "name": "InstinctGaming",
+  "description": "InstinctGaming — cheats et logiciels d'amélioration de gameplay pour Call of Duty Black Ops 7 / Warzone, ARC Raiders et Fortnite. Indétectable, stream proof, compatible PC, Xbox et PS5.",
+  "url": "https://instinct-gaming.com/",
+  "image": [
+    "https://instinct-gaming.com/unreal.webp"
+  ],
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Tous nos packs",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Ignite — Spoofer + Cleaner (COD Black Ops 7 / Warzone)",
+          "url": "https://instinct-gaming.com/ignite-spoofer-cleaner.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Unreal — Spoofer + Cleaner (COD Black Ops 7 / Warzone)",
+          "url": "https://instinct-gaming.com/unreal-spoofer-cleaner.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Delta — Triggerbot (COD Black Ops 7 / Warzone)",
+          "url": "https://instinct-gaming.com/delta-triggerbot.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Ghost — Aimbot + ESP (ARC Raiders)",
+          "url": "https://instinct-gaming.com/arc-ghost.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Juniper — Spoofer + Cleaner (ARC Raiders)",
+          "url": "https://instinct-gaming.com/arc-juniper.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Optimus — Triggerbot (ARC Raiders)",
+          "url": "https://instinct-gaming.com/arc-optimus.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Delta — Aimbot + ESP (Fortnite)",
+          "url": "https://instinct-gaming.com/fortnite-delta.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Juniper — Spoofer + Cleaner (Fortnite)",
+          "url": "https://instinct-gaming.com/fortnite-juniper.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Maxim — Valorant",
+          "url": "https://instinct-gaming.com/valorant-maxim.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Reaper — Escape from Tarkov",
+          "url": "https://instinct-gaming.com/tarkov-reaper.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat warzone",
+          "url": "https://instinct-gaming.com/warzone.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "hack warzone",
+          "url": "https://instinct-gaming.com/warzone.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat fortnite",
+          "url": "https://instinct-gaming.com/fortnite.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "fortnite hack",
+          "url": "https://instinct-gaming.com/fortnite.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat arc rider",
+          "url": "https://instinct-gaming.com/arc-raiders.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat arc rider pc",
+          "url": "https://instinct-gaming.com/arc-raiders.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat valorant",
+          "url": "https://instinct-gaming.com/valorant.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "hack valorant",
+          "url": "https://instinct-gaming.com/valorant.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat tarkov",
+          "url": "https://instinct-gaming.com/tarkov.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "hack tarkov",
+          "url": "https://instinct-gaming.com/tarkov.html"
+        }
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html"><img src="logo.png" alt="InstinctGaming" style="height:56px;width:auto"></a>
+    <div class="nav-links">
+      <a href="warzone.html">Warzone</a>
+      <a href="arc-raiders.html">Arc Raiders</a>
+      <a href="fortnite.html">Fortnite</a>
+      <a href="valorant.html">Valorant</a>
+      <a href="tarkov.html">Tarkov</a>
+      <a href="#avantages">Avantages</a>
+    </div>
+    <div class="nav-right">
+      <a href="#jeux" class="btn btn-primary">Voir les packs</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="pill"><span class="dot"></span> 10 packs · 5 jeux · Warzone, Arc Raiders, Fortnite, Valorant &amp; Tarkov · PC, Xbox &amp; PS5</span>
+    <h1>Dominez chaque lobby avec une <span class="grad">visée parfaite</span> et une vision totale.</h1>
+    <p class="sub">Aimbot, ESP et spoofer nouvelle génération sur vos jeux préférés. Indétectable, à l'épreuve du streaming, mises à jour constantes et support 24h/24.</p>
+    <div class="hero-cta">
+      <a href="#jeux" class="btn btn-primary btn-lg">🛒 Choisir mon jeu</a>
+      <a href="#avantages" class="btn btn-lg">Pourquoi nous ?</a>
+    </div>
+
+    <div class="packs-stage">
+      <a href="arc-raiders.html" class="pack-float p-left">
+        <div class="glow" style="background:radial-gradient(closest-side,rgba(245,158,11,.5),transparent)"></div>
+        <img src="arc-ghost.webp" alt="ARC Raiders Ghost">
+        <span class="label">ARC RAIDERS · <b>3 packs</b></span>
+      </a>
+      <a href="warzone.html" class="pack-float p-center">
+        <div class="glow" style="background:radial-gradient(closest-side,rgba(34,197,94,.5),transparent)"></div>
+        <img src="unreal.webp" alt="Warzone Black Ops 7">
+        <span class="label">WARZONE BO7 · <b>3 packs</b></span>
+      </a>
+      <a href="fortnite.html" class="pack-float p-right">
+        <div class="glow" style="background:radial-gradient(closest-side,rgba(139,92,246,.5),transparent)"></div>
+        <img src="fn-delta.webp" alt="Fortnite Delta">
+        <span class="label">FORTNITE · <b>2 packs</b></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="stat"><div class="n">5 000+</div><div class="stars">★★★★★ 4,8</div><div class="l">Avis Trustpilot</div></div>
+    <div class="stat"><div class="n">300+</div><div class="stars">★★★★★ 4,8</div><div class="l">Avis Reviews.io</div></div>
+    <div class="stat"><div class="n">2 800+</div><div class="stars">★★★★★</div><div class="l">Avis forum</div></div>
+    <div class="stat"><div class="n">1 min 15</div><div class="l">Temps d'attente support moyen</div></div>
+    <div class="stat"><div class="n">24/7/365</div><div class="l">Assistance en direct</div></div>
+  </div>
+</div>
+
+<!-- ============ GAMES ============ -->
+<section class="section" id="jeux">
+  <div class="sec-head">
+    <h2>Choisissez votre jeu</h2>
+    <p>10 packs · 5 jeux · licence à vie · dès 89 € · clé envoyée par email · PC, Xbox &amp; PS5</p>
+  </div>
+
+  <div class="games-grid">
+
+    <!-- WARZONE -->
+    <a class="game-card wz" href="warzone.html">
+      <div class="gc-img">
+        <span class="gc-count wz">3 packs</span>
+        <img src="warzone.jpg" alt="Call of Duty Warzone">
+      </div>
+      <div class="gc-body">
+        <h3>Call of Duty : Black Ops 7 / Warzone</h3>
+        <p class="gc-desc">Aimbot, ESP, spoofer ranked &amp; triggerbot. Indétectable et 100 % à l'épreuve du streaming.</p>
+        <div class="gc-meta"><span class="gc-price">dès <b>89 €</b></span></div>
+        <div class="consoles">🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+        <span class="gc-cta">Voir les 3 packs →</span>
+      </div>
+    </a>
+
+    <!-- ARC RAIDERS -->
+    <a class="game-card arc" href="arc-raiders.html">
+      <div class="gc-img">
+        <span class="gc-count arc">3 packs</span>
+        <img src="arc.jpg" alt="ARC Raiders">
+      </div>
+      <div class="gc-body">
+        <h3>ARC Raiders</h3>
+        <p class="gc-desc">Aimbot, ESP joueurs &amp; robots, loot &amp; extraction ESP, triggerbot et spoofer HWID. Prêt à déployer.</p>
+        <div class="gc-meta"><span class="gc-price">dès <b>89 €</b></span></div>
+        <div class="consoles">🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+        <span class="gc-cta">Voir les 3 packs →</span>
+      </div>
+    </a>
+
+    <!-- FORTNITE -->
+    <a class="game-card fn" href="fortnite.html">
+      <div class="gc-img">
+        <span class="gc-count fn">2 packs</span>
+        <img src="fortnite.jpg" alt="Fortnite">
+      </div>
+      <div class="gc-body">
+        <h3>Fortnite</h3>
+        <p class="gc-desc">Aimbot personnalisé, ESP joueurs, loot &amp; coffres ESP, spoofer HWID + cleaner. 100 % stream proof.</p>
+        <div class="gc-meta"><span class="gc-price">dès <b>89 €</b></span></div>
+        <div class="consoles">🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+        <span class="gc-cta">Voir les 2 packs →</span>
+      </div>
+    </a>
+
+    <a class="game-card val" href="valorant.html">
+      <div class="gc-img">
+        <span class="gc-count val">1 pack</span>
+        <img src="valorant.jpg" alt="Valorant">
+      </div>
+      <div class="gc-body">
+        <h3>Valorant</h3>
+        <p class="gc-desc">Aimbot, ESP, triggerbot et spoofer HWID. Indétectable et 100 % à l'épreuve du streaming.</p>
+        <div class="gc-meta"><span class="gc-price">dès <b>99 €</b></span></div>
+        <div class="consoles">🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+        <span class="gc-cta">Voir le pack →</span>
+      </div>
+    </a>
+
+    <a class="game-card tk" href="tarkov.html">
+      <div class="gc-img">
+        <span class="gc-count tk">1 pack</span>
+        <img src="tarkov.webp" alt="Escape from Tarkov">
+      </div>
+      <div class="gc-body">
+        <h3>Escape from Tarkov</h3>
+        <p class="gc-desc">Aimbot, ESP joueurs &amp; scavs, loot et extraction ESP, spoofer HWID. Prêt à déployer.</p>
+        <div class="gc-meta"><span class="gc-price">dès <b>99 €</b></span></div>
+        <div class="consoles">🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+        <span class="gc-cta">Voir le pack →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="why" id="avantages">
+  <div class="section">
+    <div class="sec-head">
+      <h2>Pourquoi InstinctGaming ?</h2>
+      <p>La page la plus commentée et la mieux notée au monde dans notre secteur.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="ico">🛡️</div><h4>Indétectable</h4><p>Empreinte de détection minimale et 100 % à l'épreuve du streaming. Enregistrez et streamez en toute discrétion.</p></div>
+      <div class="why-card"><div class="ico">🎮</div><h4>PC, Xbox &amp; PS5</h4><p>Tous nos packs sont compatibles PC, Xbox et PlayStation 5. Installation facile et configuration claire.</p></div>
+      <div class="why-card"><div class="ico">⚡</div><h4>Accès instantané</h4><p>Votre clé d'activation est envoyée par email immédiatement après le paiement. Votre temps démarre à l'activation.</p></div>
+      <div class="why-card"><div class="ico">🛟</div><h4>Support 24/7/365</h4><p>Chat en direct avec un temps d'attente moyen d'1 minute 15. Toute interruption est compensée sur votre clé.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<div class="band">
+  <div class="band-inner">
+    <h2>Prêt à dominer chaque lobby ?</h2>
+    <p>Des packs dès 89 € — accès à vie, clé envoyée par email instantanément. PC, Xbox &amp; PS5.</p>
+    <a href="#jeux" class="btn btn-primary btn-lg">🛒 Choisir mon jeu</a>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="logo"><img src="logo.png" alt="InstinctGaming" style="height:40px;width:auto"> Instinct<span>Gaming</span></div>
+      <div class="foot-links">
+        <a href="#">CGV</a><a href="#">Confidentialité</a><a href="#">Statut</a><a href="#">Support</a>
+      </div>
+    </div>
+    <p class="disclaimer">Copyright © InstinctGaming — InstinctGaming n'est en aucun cas affilié à, ni approuvé par, aucune autre entreprise ou entité, que ce soit de manière implicite ou explicite. L'ensemble du contenu de notre site web (y compris, mais sans s'y limiter, les marques déposées, les captures d'écran et les logos) est la propriété de leurs détenteurs respectifs. En affichant ce contenu, InstinctGaming ne prétend en aucun cas être affilié à, ni approuvé par, ces détenteurs.</p>
+  </div>
+</footer>
+
+</body>
+</html>

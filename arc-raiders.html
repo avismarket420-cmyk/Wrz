@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="logo/android-icon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="logo/android-icon-96x96.png">
+<link rel="apple-touch-icon" sizes="96x96" href="logo/apple-icon-96x96.png">
+<meta name="msapplication-TileImage" content="logo/ms-icon-96x96.png">
+<title>ARC Raiders — InstinctGaming</title>
+<style>
+  :root{
+    --bg:#070a10;--bg-2:#0d111b;--card:#141a26;--card-hover:#1a2130;
+    --line:#222a3a;--accent:#3b82f6;--accent-2:#22d3ee;--green:#22c55e;
+    --red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--text:#e9eef7;--muted:#8593aa;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+
+  header{position:sticky;top:0;z-index:60;background:rgba(7,10,16,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{max-width:1200px;margin:0 auto;padding:15px 20px;display:flex;align-items:center;gap:24px}
+  .logo{font-weight:800;font-size:21px;letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+  .logo .mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:15px}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:22px;margin-left:10px}
+  .nav-links a{color:var(--muted);font-size:14px;font-weight:600;transition:.2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--text)}
+  .nav-right{margin-left:auto;display:flex;gap:12px;align-items:center}
+  .btn{padding:9px 18px;border-radius:9px;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:.2s}
+  .btn:hover{background:var(--card-hover)}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 20px rgba(59,130,246,.35)}
+  .btn-primary:hover{background:#2f6fd6}
+
+  .gamehero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .gamehero::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 360px at 50% -10%,rgba(245,158,11,.20),transparent 60%);pointer-events:none}
+  .gh-inner{position:relative;max-width:1200px;margin:0 auto;padding:30px 20px 40px;text-align:center}
+  .crumbs{font-size:13px;color:var(--muted);text-align:left;margin-bottom:24px}
+  .crumbs a:hover{color:var(--text)}
+  .gh-count{display:inline-block;font-size:12px;font-weight:800;padding:6px 13px;border-radius:999px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px;background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.4)}
+  .gamehero h1{font-size:40px;font-weight:800;letter-spacing:-.4px}
+  .gamehero p{color:var(--muted);font-size:16.5px;max-width:620px;margin:14px auto 0}
+  .consoles{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted);font-weight:700}
+  .consoles b{color:#cdd7e8;background:var(--card);border:1px solid var(--line);padding:4px 11px;border-radius:7px}
+
+  .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;max-width:1120px;margin:46px auto;padding:0 20px}
+  .card{flex:0 1 340px;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.25s;position:relative}
+  .card::after{content:"";position:absolute;inset:0;border-radius:18px;border:1px solid transparent;transition:.25s;pointer-events:none}
+  .card:hover{transform:translateY(-8px)}
+  .card.red:hover::after{border-color:rgba(239,68,68,.5);box-shadow:0 20px 50px rgba(239,68,68,.18)}
+  .card.green:hover::after{border-color:rgba(34,197,94,.5);box-shadow:0 20px 50px rgba(34,197,94,.18)}
+  .card.amber:hover::after{border-color:rgba(245,158,11,.5);box-shadow:0 20px 50px rgba(245,158,11,.18)}
+  .card.purple:hover::after{border-color:rgba(139,92,246,.5);box-shadow:0 20px 50px rgba(139,92,246,.18)}
+  .card-img{position:relative;padding:24px;display:flex;justify-content:center}
+  .card.green .card-img{background:radial-gradient(420px 220px at 50% 0%,rgba(34,197,94,.12),transparent)}
+  .card.red .card-img{background:radial-gradient(420px 220px at 50% 0%,rgba(239,68,68,.12),transparent)}
+  .card.amber .card-img{background:radial-gradient(420px 220px at 50% 0%,rgba(245,158,11,.12),transparent)}
+  .card.purple .card-img{background:radial-gradient(420px 220px at 50% 0%,rgba(139,92,246,.12),transparent)}
+  .card-img img{width:80%;border-radius:10px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55));transition:.3s}
+  .card-img .artbox{width:84%}
+  .card:hover .card-img img,.card:hover .card-img .artbox{transform:translateY(-6px) scale(1.02)}
+  .status{position:absolute;top:16px;right:16px;font-size:11px;font-weight:800;padding:5px 10px;border-radius:7px;text-transform:uppercase;letter-spacing:.4px;z-index:2;background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.4)}
+  .card-body{padding:8px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .card-body h4{font-size:19px;font-weight:800}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 14px}
+  .tag{font-size:11px;font-weight:700;padding:5px 9px;border-radius:6px;color:#a8b6cf;background:#0f1622;border:1px solid var(--line)}
+  .desc{font-size:13.5px;color:var(--muted);margin-bottom:16px;flex:1}
+  .price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+  .price{font-size:28px;font-weight:800}
+  .lifebadge{font-size:11px;font-weight:800;color:var(--accent-2);background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);padding:4px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
+  .consoles2{display:flex;gap:6px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);font-weight:700;margin-bottom:16px}
+  .consoles2 b{color:#cdd7e8;background:#0f1622;border:1px solid var(--line);padding:3px 8px;border-radius:6px}
+  .card-cta{display:flex;gap:10px}
+  .card-cta .btn{flex:1;text-align:center}
+
+  .artbox{border-radius:12px;border:1px solid var(--line);aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;position:relative;overflow:hidden;box-shadow:0 20px 34px rgba(0,0,0,.5)}
+  .artbox.arc{background:radial-gradient(120% 95% at 50% 0%,rgba(245,158,11,.30),transparent 62%),linear-gradient(135deg,#2a2113,#0a0e16)}
+  .artbox.fortnite{background:radial-gradient(120% 95% at 50% 0%,rgba(139,92,246,.34),transparent 62%),linear-gradient(135deg,#1d1636,#0a0e16)}
+  .artbox .ab-game{font-size:10px;font-weight:800;letter-spacing:2px;color:rgba(255,255,255,.6);text-transform:uppercase}
+  .artbox .ab-name{font-size:28px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff}
+  .artbox.arc .ab-name{color:#ffe2ad}
+  .artbox.fortnite .ab-name{color:#ddd0ff}
+  .artbox .ab-brand{font-size:9px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:1px}
+
+  .band{max-width:1100px;margin:0 auto;padding:0 20px}
+  .band-inner{background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(34,211,238,.1));border:1px solid rgba(59,130,246,.35);border-radius:20px;padding:40px 30px;text-align:center;margin:20px 0 64px}
+  .band-inner h2{font-size:26px;font-weight:800}
+  .band-inner p{color:#cdd7e8;margin:10px 0 22px}
+  .btn-lg{padding:14px 28px;font-size:15.5px;border-radius:11px}
+
+  footer{border-top:1px solid var(--line);background:var(--bg-2)}
+  .foot-inner{max-width:1100px;margin:0 auto;padding:34px 20px}
+  .foot-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+  .foot-links{display:flex;gap:20px}
+  .foot-links a{color:var(--muted);font-size:13.5px;font-weight:600}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{color:#6b7689;font-size:12px;line-height:1.7;border-top:1px solid var(--line);padding-top:20px}
+
+  @media(max-width:760px){.nav-links{display:none}.gamehero h1{font-size:30px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "logo": "https://instinct-gaming.com/logo.png",
+  "name": "InstinctGaming — ARC Raiders",
+  "description": "Cheats ARC Raiders : aimbot, ESP joueurs et robots, loot et extraction ESP, triggerbot et spoofer HWID. Compatible PC, Xbox et PS5.",
+  "url": "https://instinct-gaming.com/arc-raiders.html",
+  "image": [
+    "https://instinct-gaming.com/arc-ghost.webp"
+  ],
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Packs ARC Raiders",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Ghost — Aimbot + ESP (ARC Raiders)",
+          "url": "https://instinct-gaming.com/arc-ghost.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Juniper — Spoofer + Cleaner (ARC Raiders)",
+          "url": "https://instinct-gaming.com/arc-juniper.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Optimus — Triggerbot (ARC Raiders)",
+          "url": "https://instinct-gaming.com/arc-optimus.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat arc rider pc",
+          "url": "https://instinct-gaming.com/arc-raiders.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat arc rider ps5",
+          "url": "https://instinct-gaming.com/arc-raiders.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat arc rider xbox",
+          "url": "https://instinct-gaming.com/arc-raiders.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "cheat arc rider",
+          "url": "https://instinct-gaming.com/arc-raiders.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "aim bot fortnite",
+          "url": "https://instinct-gaming.com/arc-raiders.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "wallack",
+          "url": "https://instinct-gaming.com/arc-raiders.html"
+        }
+      }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://instinct-gaming.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ARC Raiders",
+      "item": "https://instinct-gaming.com/arc-raiders.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html"><img src="logo.png" alt="InstinctGaming" style="height:56px;width:auto"></a>
+    <div class="nav-links">
+      <a href="warzone.html" >Warzone</a>
+      <a href="arc-raiders.html" class="active">Arc Raiders</a>
+      <a href="fortnite.html" >Fortnite</a>
+      <a href="valorant.html" >Valorant</a>
+      <a href="tarkov.html" >Tarkov</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html" class="btn btn-primary">Voir les packs</a>
+    </div>
+  </nav>
+</header>
+
+<section class="gamehero">
+  <div class="gh-inner">
+    <div class="crumbs"><a href="index.html">Accueil</a> &nbsp;/&nbsp; <span>ARC Raiders</span></div>
+    <span class="gh-count">3 packs</span>
+    <h1>ARC Raiders</h1>
+    <p>Aimbot, ESP joueurs & robots, loot et extraction ESP, triggerbot et spoofer HWID. Prêt à déployer.</p>
+    <div class="consoles">Consoles prises en charge : 🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+  </div>
+</section>
+
+<div class="grid">
+  <a class="card amber" href="arc-ghost.html">
+    <div class="card-img"><span class="status">● Indétecté</span><img src="arc-ghost.webp" alt="ARC Raiders Ghost"></div>
+    <div class="card-body">
+      <h4>Ghost — Aimbot + ESP</h4>
+      <div class="tags"><span class="tag">Aimbot</span><span class="tag">Loot ESP</span><span class="tag">Stream Proof</span></div>
+      <p class="desc">Aimbot avancé, ESP joueurs & robots ARC, loot et extraction ESP. No-recoil.</p>
+      <div class="price-row"><span class="price">89 €</span><span class="lifebadge">À vie</span></div>
+      <div class="consoles2">🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+      <div class="card-cta"><span class="btn">Détails</span><span class="btn btn-primary">Acheter</span></div>
+    </div>
+  </a>
+  <a class="card amber" href="arc-juniper.html">
+    <div class="card-img"><span class="status">● Indétecté</span><img src="arc-juniper.webp" alt="ARC Raiders Juniper"></div>
+    <div class="card-body">
+      <h4>Juniper — Spoofer + Cleaner</h4>
+      <div class="tags"><span class="tag">HWID Spoofer</span><span class="tag">Cleaner</span><span class="tag">Aimbot</span></div>
+      <p class="desc">Spoofer HWID + cleaner, sessions protégées et reset ranked. ESP complet.</p>
+      <div class="price-row"><span class="price">89 €</span><span class="lifebadge">À vie</span></div>
+      <div class="consoles2">🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+      <div class="card-cta"><span class="btn">Détails</span><span class="btn btn-primary">Acheter</span></div>
+    </div>
+  </a>
+  <a class="card amber" href="arc-optimus.html">
+    <div class="card-img"><span class="status">● Indétecté</span><img src="arc-optimus.webp" alt="ARC Raiders Optimus"></div>
+    <div class="card-body">
+      <h4>Optimus — Triggerbot</h4>
+      <div class="tags"><span class="tag">Triggerbot</span><span class="tag">ESP</span><span class="tag">Intel & AMD</span></div>
+      <p class="desc">Triggerbot ultra-réactif, aimbot léger et ESP complet (joueurs, robots, butin).</p>
+      <div class="price-row"><span class="price">89 €</span><span class="lifebadge">À vie</span></div>
+      <div class="consoles2">🖥️ <b>PC</b> · 🎮 <b>Xbox</b> · 🎮 <b>PS5</b></div>
+      <div class="card-cta"><span class="btn">Détails</span><span class="btn btn-primary">Acheter</span></div>
+    </div>
+  </a>
+</div>
+
+<div class="band">
+  <div class="band-inner">
+    <h2>ARC Raiders — accès à vie</h2>
+    <p>Tous les packs à 89 €, clé d'activation envoyée par email instantanément. PC, Xbox &amp; PS5.</p>
+    <a href="index.html" class="btn btn-primary btn-lg">← Tous les jeux</a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="logo"><img src="logo.png" alt="InstinctGaming" style="height:40px;width:auto"> Instinct<span>Gaming</span></div>
+      <div class="foot-links"><a href="#">CGV</a><a href="#">Confidentialité</a><a href="#">Statut</a><a href="#">Support</a></div>
+    </div>
+    <p class="disclaimer">Copyright © InstinctGaming — InstinctGaming n'est en aucun cas affilié à, ni approuvé par, aucune autre entreprise ou entité, que ce soit de manière implicite ou explicite. L'ensemble du contenu de notre site web (y compris, mais sans s'y limiter, les marques déposées, les captures d'écran et les logos) est la propriété de leurs détenteurs respectifs. En affichant ce contenu, InstinctGaming ne prétend en aucun cas être affilié à, ni approuvé par, ces détenteurs.</p>
+  </div>
+</footer>
+
+</body>
+</html>
