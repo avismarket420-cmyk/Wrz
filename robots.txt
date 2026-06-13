@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://instinct-gaming.com/sitemap.xml
