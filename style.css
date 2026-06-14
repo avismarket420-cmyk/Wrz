@@ -1,7 +1,7 @@
 /* ===== GLOBALS ===== */
 :root{
     --bg:#070a10;--bg-2:#0d111b;--card:#141a26;--card-hover:#1a2130;
-    --line:#222a3a;--accent:#3b82f6;--accent-2:#22d3ee;--green:#22c55e;
+    --line:#222a3a;--accent:#6d28d9;--accent-2:#22d3ee;--green:#22c55e;
     --red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--text:#e9eef7;--muted:#8593aa;
   }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -24,8 +24,8 @@ body.home .nav-links a:hover{color:var(--text)}
 body.home .nav-right{margin-left:auto;display:flex;gap:12px;align-items:center}
 body.home .btn{padding:9px 18px;border-radius:9px;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:.2s}
 body.home .btn:hover{background:var(--card-hover)}
-body.home .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 20px rgba(59,130,246,.35)}
-body.home .btn-primary:hover{background:#2f6fd6}
+body.home .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+body.home .btn-primary:hover{background:#5b21b6}
 body.home .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 body.home .hero::before{content:"";position:absolute;inset:0;background:
     radial-gradient(900px 480px at 50% -8%,rgba(59,130,246,.28),transparent 60%),
@@ -110,7 +110,7 @@ body.home .gc-price b{font-size:20px;font-weight:800;color:#fff}
 body.home .consoles{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:16px}
 body.home .consoles b{color:#cdd7e8;background:#0f1622;border:1px solid var(--line);padding:3px 9px;border-radius:6px}
 body.home .gc-cta{display:block;text-align:center;padding:12px;border-radius:11px;background:var(--accent);color:#fff;font-weight:800;font-size:14.5px;transition:.2s}
-body.home .game-card:hover .gc-cta{background:#2f6fd6}
+body.home .game-card:hover .gc-cta{background:#5b21b6}
 body.home .why{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 body.home .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:36px}
 body.home .why-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
@@ -151,8 +151,8 @@ body.game .nav-links a:hover, body.game .nav-links a.active{color:var(--text)}
 body.game .nav-right{margin-left:auto;display:flex;gap:12px;align-items:center}
 body.game .btn{padding:9px 18px;border-radius:9px;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:.2s}
 body.game .btn:hover{background:var(--card-hover)}
-body.game .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 20px rgba(59,130,246,.35)}
-body.game .btn-primary:hover{background:#2f6fd6}
+body.game .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+body.game .btn-primary:hover{background:#5b21b6}
 body.game .gamehero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 body.game .gamehero::before{content:"";position:absolute;inset:0;background:var(--theme-bg);pointer-events:none}
 body.game .gh-inner{position:relative;max-width:1200px;margin:0 auto;padding:30px 20px 40px;text-align:center}
@@ -238,7 +238,7 @@ body.product .nav-right{margin-left:auto;display:flex;gap:12px;align-items:cente
 body.product .btn{padding:9px 18px;border-radius:8px;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:.2s}
 body.product .btn:hover{background:var(--card-hover)}
 body.product .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
-body.product .btn-primary:hover{background:#2f6fd6}
+body.product .btn-primary:hover{background:#5b21b6}
 body.product .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 body.product .crumbs{font-size:13px;color:var(--muted);padding:22px 0 10px}
 body.product .crumbs a:hover{color:var(--text)}
@@ -282,7 +282,7 @@ body.product .qty{display:flex;align-items:center;gap:12px;margin:18px 0}
 body.product .qty button{width:38px;height:38px;border-radius:8px;border:1px solid var(--line);background:#0f1622;color:var(--text);font-size:18px;cursor:pointer}
 body.product .qty input{width:54px;height:38px;text-align:center;background:#0f1622;border:1px solid var(--line);border-radius:8px;color:var(--text);font-weight:800;font-size:16px}
 body.product .add{display:block;width:100%;padding:15px;font-size:16px;font-weight:800;border-radius:12px;background:var(--accent);border:none;color:#fff;cursor:pointer;transition:.2s;text-align:center;text-decoration:none}
-body.product .add:hover{background:#2f6fd6}
+body.product .add:hover{background:#5b21b6}
 body.product .delivery{margin-top:14px;background:#0f1622;border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-start}
 body.product .delivery .ico{font-size:20px;flex:0 0 auto}
 body.product .delivery p{font-size:13px;color:#cdd7e8}
@@ -346,4 +346,46 @@ body.product .thumbs{display:none}
   body.home .pack-float .label{position:static;transform:none;margin-top:10px;white-space:normal;background:transparent;border:none;padding:0;backdrop-filter:none;font-size:12px}
   body.home .p-left, body.home .p-left2, body.home .p-center, body.home .p-right, body.home .p-right2{animation:none}
   body.home .sec-head h2{font-size:26px}
+}
+
+/* ===== SCROLL REVEAL + COMPTEURS ===== */
+.reveal{opacity:0;will-change:opacity,transform;transition:opacity .6s cubic-bezier(.22,.7,.25,1),transform .6s cubic-bezier(.22,.7,.25,1)}
+.reveal.r-up{transform:translateY(32px)}
+.reveal.r-left{transform:translateX(-46px)}
+.reveal.r-right{transform:translateX(46px)}
+.reveal.in-view{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* ===== CORRECTIFS UX ===== */
+/* Ancres : ne plus passer sous le header collant au clic (#jeux, #avantages...) */
+:target,[id]{scroll-margin-top:90px}
+
+/* Focus clavier visible (accessibilité) */
+a:focus-visible,button:focus-visible,.btn:focus-visible,
+.burger:focus-visible,.dur:focus-visible,.qty button:focus-visible,
+.add:focus-visible,.gc-cta:focus-visible{
+  outline:2px solid var(--accent-2);
+  outline-offset:3px;
+  border-radius:9px;
+}
+
+/* Retour tactile au clic sur les CTA */
+.btn:active,.add:active,.gc-cta:active,.qty button:active,.dur:active{
+  transform:scale(.97)
+}
+
+/* Sélection de texte + scrollbar thématisées (finition fond sombre) */
+::selection{background:rgba(124,58,237,.45);color:#fff}
+html{scrollbar-color:var(--line) var(--bg)}
+
+/* Réduction globale des animations si l'utilisateur le demande */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
 }
