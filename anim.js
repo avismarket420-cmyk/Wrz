@@ -1,4 +1,4 @@
-/* InstinctGaming — micro-interactions : révélation au scroll + compteurs animés */
+
 (function () {
   "use strict";
 
@@ -6,14 +6,11 @@
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasIO = "IntersectionObserver" in window;
 
-  /* ---------- 1. Révélation au scroll (coulissement) ---------- */
-
   function tag(el, dir, delay) {
     el.classList.add("reveal", "r-" + dir);
     if (delay) el.style.transitionDelay = delay.toFixed(2) + "s";
   }
 
-  // Blocs qui montent verticalement, avec décalage entre éléments d'un même groupe
   var upGroups = [
     ".sec-head", ".why-card", ".band-inner", ".stat",
     ".qa", ".fcard", ".tcard", ".menu-shots figure"
@@ -25,14 +22,12 @@
     });
   });
 
-  // Cartes de jeux / packs : coulissement alterné gauche / droite
   document
     .querySelectorAll(".games-grid > .game-card, .grid > .card")
     .forEach(function (el, i) {
       tag(el, i % 2 ? "right" : "left", Math.floor(i / 2) * 0.08);
     });
 
-  // Pages produit : fiche d'achat depuis la droite, galerie depuis la gauche
   document.querySelectorAll(".gallery").forEach(function (el) { tag(el, "left"); });
   document.querySelectorAll(".buybox").forEach(function (el) { tag(el, "right"); });
 
@@ -52,16 +47,14 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- 2. Compteurs qui montent ---------- */
-
   function fmt(n) {
-    // séparateur de milliers = espace fine insécable ( )
+
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 
   document.querySelectorAll(".stat .n").forEach(function (el) {
     var raw = el.textContent.trim();
-    // n'anime que les valeurs purement numériques (ex : "5 000+", "300+")
+
     var m = raw.match(/^([\d\s  ]+)(\+?)$/);
     if (!m) return;
     var target = parseInt(m[1].replace(/[\s  ]/g, ""), 10);
@@ -79,7 +72,7 @@
       function step(ts) {
         if (t0 === null) t0 = ts;
         var p = Math.min((ts - t0) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        var eased = 1 - Math.pow(1 - p, 3);
         el.textContent = fmt(Math.round(target * eased)) + suffix;
         if (p < 1) requestAnimationFrame(step);
       }
@@ -94,8 +87,6 @@
     }, { threshold: 0.6 });
     io2.observe(el);
   });
-
-  /* ---------- 3. Sélecteur de jeu (hero) ---------- */
 
   var pick = document.getElementById("hero-pick");
   if (pick) {
@@ -190,7 +181,6 @@
       });
     });
 
-    // état initial (Warzone) pour aligner la couleur d'accent du cadre
     apply("wz");
   }
 })();
