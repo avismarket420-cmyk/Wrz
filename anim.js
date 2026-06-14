@@ -94,4 +94,103 @@
     }, { threshold: 0.6 });
     io2.observe(el);
   });
+
+  /* ---------- 3. Sélecteur de jeu (hero) ---------- */
+
+  var pick = document.getElementById("hero-pick");
+  if (pick) {
+    var GAMES = {
+      wz: {
+        img: "unreal.webp", alt: "cheat warzone",
+        count: "3 packs disponibles",
+        name: "Call of Duty : Black Ops 7 / Warzone",
+        desc: "Aimbot, ESP, spoofer ranked & triggerbot. 100 % à l'épreuve du streaming.",
+        price: "89 €", consoles: "🖥️ PC · 🎮 Xbox · 🎮 PS5",
+        cta: "Voir les packs Warzone →", href: "cheat-warzone.html",
+        glow: "59,130,246"
+      },
+      arc: {
+        img: "arc-ghost.webp", alt: "cheat arc rider pc",
+        count: "3 packs disponibles",
+        name: "ARC Raiders",
+        desc: "Aimbot, ESP joueurs & robots, loot & extraction ESP, triggerbot et spoofer HWID.",
+        price: "89 €", consoles: "🖥️ PC · 🎮 Xbox · 🎮 PS5",
+        cta: "Voir les packs ARC Raiders →", href: "cheat-arc-rider.html",
+        glow: "245,158,11"
+      },
+      fn: {
+        img: "fn-delta.webp", alt: "cheat fortnite",
+        count: "2 packs disponibles",
+        name: "Fortnite",
+        desc: "Aimbot personnalisé, ESP joueurs, loot & coffres ESP, spoofer HWID + cleaner.",
+        price: "89 €", consoles: "🖥️ PC · 🎮 Xbox · 🎮 PS5",
+        cta: "Voir les packs Fortnite →", href: "cheat-fortnite.html",
+        glow: "139,92,246"
+      },
+      val: {
+        img: "valorant-maxim.webp", alt: "cheat valorant pc",
+        count: "1 pack disponible",
+        name: "Valorant",
+        desc: "Aimbot, ESP, triggerbot et spoofer HWID. Indétectable et 100 % stream proof.",
+        price: "99 €", consoles: "🖥️ PC · 🎮 Xbox · 🎮 PS5",
+        cta: "Voir le pack Valorant →", href: "cheat-valorant.html",
+        glow: "255,70,85"
+      },
+      tk: {
+        img: "tarkov-reaper.webp", alt: "cheat tarkov pc",
+        count: "1 pack disponible",
+        name: "Escape from Tarkov",
+        desc: "Aimbot, ESP joueurs & scavs, loot et extraction ESP, spoofer HWID. Prêt à déployer.",
+        price: "99 €", consoles: "🖥️ PC",
+        cta: "Voir le pack Tarkov →", href: "cheat-tarkov.html",
+        glow: "166,154,70"
+      }
+    };
+
+    var tabs = pick.querySelectorAll(".pick-tab");
+    var stage = pick.querySelector(".pick-stage");
+    var elGlow = pick.querySelector(".pick-glow");
+    var elImg = pick.querySelector(".pick-img");
+    var elCount = pick.querySelector(".pick-count");
+    var elName = pick.querySelector(".pick-name");
+    var elDesc = pick.querySelector(".pick-desc");
+    var elPrice = pick.querySelector(".pick-price");
+    var elCons = pick.querySelector(".pick-consoles");
+    var elCta = pick.querySelector(".pick-cta");
+
+    function apply(key) {
+      var g = GAMES[key];
+      if (!g) return;
+      pick.style.setProperty("--game", "rgb(" + g.glow + ")");
+      elGlow.style.background =
+        "radial-gradient(closest-side,rgba(" + g.glow + ",.55),transparent)";
+      elImg.src = g.img;
+      elImg.alt = g.alt;
+      elCount.textContent = g.count;
+      elName.textContent = g.name;
+      elDesc.textContent = g.desc;
+      elPrice.innerHTML = "dès <b>" + g.price + "</b>";
+      elCons.textContent = g.consoles;
+      elCta.textContent = g.cta;
+      elCta.href = g.href;
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        if (tab.classList.contains("is-active")) return;
+        tabs.forEach(function (t) { t.classList.remove("is-active"); });
+        tab.classList.add("is-active");
+        var key = tab.getAttribute("data-game");
+        if (reduce) { apply(key); return; }
+        stage.classList.add("fade");
+        setTimeout(function () {
+          apply(key);
+          stage.classList.remove("fade");
+        }, 180);
+      });
+    });
+
+    // état initial (Warzone) pour aligner la couleur d'accent du cadre
+    apply("wz");
+  }
 })();
